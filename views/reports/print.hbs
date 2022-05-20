@@ -1,0 +1,68 @@
+<section class="card">
+    <div id="invoice-template" class="card-body">
+        <!-- Invoice Company Details -->
+        <div id="invoice-company-details" class="row">
+            <div class="col-md-6 col-sm-12 text-center text-md-left">
+                <div class="media">
+                    <img src="/Adminlook/images/logo/logo.png" alt="company logo" class="" style="height:50px;">
+                    <div class="media-body">
+                        <ul class="ml-2 px-0 list-unstyled">
+                            {{!--<li class="text-bold-800">SataExpress</li>--}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center text-md-right">
+                <h2>رقم الفاتورة</h2>
+                <p class="pb-3"> {{pay._id}}</p>
+                <ul class="px-0 list-unstyled">
+                    <li>المبلغ</li>
+                    <li class="lead text-bold-800">ج م {{pay.price}}</li>
+                </ul>
+            </div>
+        </div>
+        <!--/ Invoice Company Details -->
+        <!-- Invoice Customer Details -->
+        <div id="invoice-customer-details" class="row pt-2">
+            <div class="col-sm-12 text-center text-md-left">
+                <p class="text-muted">مصدرة الي</p>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center text-md-left">
+                <ul class="px-0 list-unstyled">
+                    <li class="text-bold-800">استاذ :  {{pay.user.name}}</li>
+
+                    <li> : من قام باصدار الفاتورة</li>
+                    <li class="lead text-bold-800">{{pay.whocreate.name}}</li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center text-md-right">
+                <p>
+                    <span class="text-muted">تاريخ :</span> {{pay.createdAt}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

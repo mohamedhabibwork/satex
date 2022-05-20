@@ -1,0 +1,148 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">الرئيسية </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="/admin/users/{{type2}}"> {{type}} </a>
+                            </li>
+                            <li class="breadcrumb-item active">اضافة {{type}}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic form layout section start -->
+            <section id="basic-form-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" id="basic-layout-form">اضافة {{type}} </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {{#if error}}
+                                {{#each error as |err|}}
+                                    <div class="row mr-2 ml-2">
+                                        <button type="text" class="btn btn-lg btn-block btn-outline-danger mb-2"
+                                                id="type-error">{{err}}
+                                        </button>
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <form class="form" action="/admin/users/insert"
+                                          method="POST">
+                                        <input type="hidden" name="type" value="{{type2}}">
+                                        <div class="form-body">
+                                            <h4 class="form-section"><i class="ft-home"></i> بيانات {{type}} </h4>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">اسم {{type}}</label>
+                                                        <input type="text" id="name"
+                                                               class="form-control"
+                                                               placeholder="اسم {{type}}"
+                                                               name="name" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">المدن</label>
+                                                        <select class="form-control" name="countery_id" required>
+                                                            <option value="">اختر من المدن</option>
+                                                            {{#each cats}}
+                                                                <option value="{{this._id}}">{{this.name}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">البريد الالكتروني</label>
+                                                        <input type="email" id="name"
+                                                               class="form-control"
+                                                               placeholder="البريد الالكتروني"
+                                                               name="email" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">رقم الموبيل</label>
+                                                        <input type="tel" id="phone"
+                                                               class="form-control"
+                                                               placeholder="رقم الموبيل"
+                                                               name="phone" required dir="ltr">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">رقم موبيل اخر</label>
+                                                        <input type="tel" id="phone"
+                                                               class="form-control"
+                                                               placeholder="رقم  موبيل اخر"
+                                                               name="phone2" dir="ltr">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">كلمة السر</label>
+                                                        <input type="password" id="name"
+                                                               class="form-control"
+                                                               placeholder="كلمة السر"
+                                                               name="password" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">العنوان </label>
+                                                        <input type="text" id="name"
+                                                               class="form-control"
+                                                               placeholder="العنوان"
+                                                               name="address" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                <i class="ft-x"></i> تراجع
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="la la-check-square-o"></i> حفظ
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // Basic form layout section end -->
+        </div>
+    </div>
+</div>

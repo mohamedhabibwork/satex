@@ -1,0 +1,68 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h3 class="content-header-title"> الاقسام الفرعية </h3>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">الرئيسية</a>
+                            </li>
+                            <li class="breadcrumb-item active"> الاقسام الفرعية
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic form layout section start -->
+            <div class="row">
+                {{#each subcats}}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card text-center" style="box-shadow: 5px 5px 5px grey;  border-radius: 10px;"
+                             onmousemove="$(this).css('box-shadow', '0 0 #666').css('transform', 'translateY(5px)')"
+                             onmouseleave="$(this).css('box-shadow', '5px 5px 5px grey').css('transform', 'translateY(-5px)')">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <img src="/Adminlook/images/logo/logo.png" alt="element 02" width="160" height="140"
+                                         class="mb-0">
+                                    <h3 class="card-title">{{this.name}}</h3>
+                                    <h2 class="card-title">{{this.cat.name}}</h2>
+                                    <div class="row">
+                                        <a href="/admin/subcats/edit/{{this._id}}"
+                                           class="btn btn-outline-primary col-md-6 col-6">تعديل</a>
+
+                                        <a href="/admin/subcats/delete/{{this._id}}"
+                                           class="btn btn-outline-danger col-md-6 col-6">حذف</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{else}}
+                    <div class="container">
+                        <div class="container">
+                            <div class="text-center">
+                                <img src="/Adminlook/images/logo/logo.png" class="rounded container" alt="..."
+                                     height="300" style="width:500px">
+                                <h3 class="text-center" style="font-size:35px">لاتوجد اقسام للعرض</h3>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+{{#if success}}
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'تمت العملية بنجاح',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    </script>
+{{/if}} 

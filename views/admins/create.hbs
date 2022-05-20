@@ -1,0 +1,288 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">الرئيسية </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="/admin/permission"> الاعدادات </a>
+                            </li>
+                            <li class="breadcrumb-item active">اضافة حساب اداري جديد
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic form layout section start -->
+            <section id="basic-form-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" id="basic-layout-form">اضافة حساب اداري جديد</h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {{#if error}}
+                                {{#each error as |err|}}
+                                    <div class="row mr-2 ml-2">
+                                        <button type="text" class="btn btn-lg btn-block btn-outline-danger mb-2"
+                                                id="type-error">{{err}}
+                                        </button>
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <form class="form" action="/admin/permission/store"
+                                          method="POST">
+                                        <div class="form-body">
+                                            <h4 class="form-section"><i class="ft-home"></i> بيانات الحساب الاداري </h4>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">الاسم</label>
+                                                        <input type="text" id="name"
+                                                               class="form-control"
+                                                               placeholder="الاسم"
+                                                               name="name" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1"> الوظيفة </label>
+                                                        <select name="type" id="" class="form-control" required>
+                                                            <option value="admin" selected> مدير</option>
+                                                            <option value="worker">موظف</option>
+                                                            <option value="dataentry">مدخل بيانات</option>
+                                                            <option value="support">دعم فني</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">البريد الاكتروني</label>
+                                                        <input type="email" id="name"
+                                                               class="form-control"
+                                                               placeholder="البريد الاكتروني"
+                                                               name="email" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">كلمة السر</label>
+                                                        <input type="password" id="name"
+                                                               class="form-control"
+                                                               placeholder="كلمة السر"
+                                                               name="password" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4 class="form-section"><i class="ft-home"></i> الصلاحيات</h4>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addusers" name="addusers">
+                                                            اضافة العملاء
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delusers" name="delusers"> حذف
+                                                            العملاء
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editusers" name="editusers">
+                                                            تعديل العملاء
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="notifications"
+                                                                   name="notifications"> الاشعارات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="adddeleveries"
+                                                                   name="adddeleveries"> اضافة المندوبين
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="deldeleveries"
+                                                                   name="deldeleveries"> حذف المندوبين
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editdeleveries"
+                                                                   name="editdeleveries"> تعديل المندوبين
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addvendors" name="addvendors">
+                                                            اضافة التجار
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delvendors" name="delvendors">
+                                                            حذف التجار
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editvendors"
+                                                                   name="editvendors"> تعديل التجار
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addcats" name="addcats"> اضافة
+                                                            انواع المنقولات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delcats" name="delcats"> حذف
+                                                            انواع المنقولات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editcats" name="editcats">
+                                                            تعديل انواع المنقولات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addlocations"
+                                                                   name="addlocations"> اضافة المدن
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editlocations"
+                                                                   name="editlocations"> تعديل المدن
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="dellocations"
+                                                                   name="dellocations"> حذف المدن
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="orders" name="orders"> انهاء
+                                                            الطلبات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="reports" name="reports">
+                                                            التقارير
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addcoupons" name="addcoupons">
+                                                            اضافة كوبونات الخصم
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editcoupons"
+                                                                   name="editcoupons"> تعديل كوبونات الخصم
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delcoupons" name="delcoupons">
+                                                            حذف كوبونات الخصم
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                <i class="ft-x"></i> تراجع
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="la la-check-square-o"></i> حفظ
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // Basic form layout section end -->
+        </div>
+    </div>
+</div>

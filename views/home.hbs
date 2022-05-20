@@ -1,0 +1,254 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <div class="row mb-1">
+                <div class="col-md-2 col-xl-2 col-lg-4 col-4">
+                    <a href="/admin/users/create/client" class="btn btn-success mb-1">اصافة عميل</a>
+                </div>
+                <div class="col-md-2 col-xl-2 col-lg-4 col-4">
+                    <a href="/admin/users/create/traders" class="btn btn-info mb-1"> اضافة تاجر</a>
+                </div>
+                <div class="col-md-2 col-xl-2 col-lg-4 col-4">
+                    <a href="/admin/coupons/create" class="btn btn-danger mb-1">اضافة كوبون خصم</a>
+                </div>
+                <div class="col-md-2 col-xl-2 col-lg-4 col-4">
+                    <a href="/admin/cats/create" class="btn btn-warning mb-1"> تصنيف منقولات</a>
+                </div>
+                <div class="col-md-2 col-xl-2 col-lg-4 col-4">
+                    <a href="/admin/countries/create" class="btn btn-dark mb-1">اضافة دولة</a>
+                </div>
+                <div class="col-12 col-md-12 col-xl-12 col-lg-12 text-center">
+                    <a href="#" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModal"><i
+                            class="la la-send"></i> ارسال الاشعارات</a>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">الاشعارات</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="POST" action="/admin/post-notifications">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">اختر لمن تريد الارسال</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" name="type"
+                                                required>
+                                            {{!-- <option value="all"> الكل</option> --}}
+                                            <option value="delevery">مندوبين</option>
+                                            <option value="vendor">تجار</option>
+                                            <option value="user">عملاء</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">عنوان الرسالة</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" name="title"
+                                               placeholder="عنوان الرسالة" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">محتوي الرسالة</label>
+                                        <textarea name="body" class="form-control" placeholder="محتوي الرسالة" col="50"
+                                                  row="20" required> </textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                    <button type="submit" class="btn btn-primary"> ارسال</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="crypto-stats-3" class="row">
+                <div class="col-xl-3 col-lg-6 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="info orders">0</h3>
+                                        <h6>الطلبات</h6>
+                                    </div>
+                                    <div>
+                                        <i class="la la-bullhorn info font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                    <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width:0%"
+                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="primary users">0</h3>
+                                        <h6>العملاء</h6>
+                                    </div>
+                                    <div>
+                                        <i class="la la-male primary font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                    <div class="progress-bar bg-gradient-x-primary" role="progressbar" style="width:%"
+                                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="success acceptorders">0</h3>
+                                        <h6>الطلبات المكتملة</h6>
+                                    </div>
+                                    <div>
+                                        <i class="la la-check success font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                    <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width:0%"
+                                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="warning pendingorders">0</h3>
+                                        <h6>الطلبات المعلقة</h6>
+                                    </div>
+                                    <div>
+                                        <i class="la la-history warning font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                    <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width:0%"
+                                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="danger cancelorders">0</h3>
+                                        <h6>الطلبات الملغاة</h6>
+                                    </div>
+                                    <div>
+                                        <i class="la la-times danger font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                    <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width:0%"
+                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-lg-6 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="primary earns">0</h3>
+                                        <h6>الارباح المحصلة</h6>
+                                    </div>
+                                    <div>
+                                        <i class="la la-check primary font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                    <div class="progress-bar bg-gradient-x-primary" role="progressbar" style="width:0%"
+                                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-lg-6 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="warning wallets">0</h3>
+                                        <h6>الارباح الغير محصلة</h6>
+                                    </div>
+                                    <div>
+                                        <i class="la la-ban warning font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                    <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width:0%"
+                                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Candlestick Multi Level Control Chart -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">الاحصائيات</h4>
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <div class="container">
+
+                                    <div>
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

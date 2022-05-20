@@ -1,0 +1,93 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h3 class="content-header-title">بانتظار التفعيل </h3>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">الرئيسية</a>
+                            </li>
+                            <li class="breadcrumb-item active"> بانتظار التفعيل
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- DOM - jQuery events table -->
+            <section id="dom">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">بانتظار التفعيل </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table
+                                            class="table display nowrap table-striped table-bordered scroll-horizontal">{{--scroll-horizontal--}}
+                                        <thead class="">
+                                        <tr>
+                                            <th>الاسم</th>
+                                            <th>رقم الموبيل</th>
+                                            <th>البريد الالكتروني</th>
+                                            <th>المدينة</th>
+                                            <th>اتخاذ اجراء</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each users as |user|}}
+                                            <tr>
+                                                <td><a href="/admin/users/detail/{{user._id}}">{{user.name}}</a></td>
+                                                <td>{{user.phone}}</td>
+                                                <td>{{user.email}}</td>
+                                                <td>{{user.countery.name}}</td>
+                                                <td>
+                                                    <div class="btn-group" role="group"
+                                                         aria-label="Basic example">
+                                                        <a href="/admin/users/detail/{{user._id}}"
+                                                           class="btn btn-outline-primary btn-sm box-shadow-3 mr-1 mb-1">تفاصيل</a>
+
+                                                        <a href="/admin/users/active/{{user._id}}"
+                                                           class="btn btn-outline-warning btn-sm box-shadow-3 mr-1 mb-1">تفعيل</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{{#if success}}
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'تمت العملية بنجاح',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    </script>
+{{/if}} 

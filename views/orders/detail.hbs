@@ -1,0 +1,405 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h3 class="content-header-title">تفاصيل الطلب </h3>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">الرئيسية</a>
+                            </li>
+                            <li class="breadcrumb-item active"> تفاصيل الطلب
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- DOM - jQuery events table -->
+            <section id="dom">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">بيانات الطلب </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table
+                                            class="table display nowrap table-striped table-bordered">{{--scroll-horizontal--}}
+                                        <thead class="">
+                                        {{#each orders}}
+                                            <tr>
+                                                <th>رقم الطلب</th>
+                                                <th>{{this._id}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th> تاريخ الطلب</th>
+                                                <th>{{this.createdAt}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th>حالة الطلب</th>
+                                                <th>{{this.statusar}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th>اجمالي التكلفة</th>
+                                                <th>{{this.price}} ج م</th>
+                                            </tr>
+                                        {{/each}}
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> بيانات التاجر </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table
+                                            class="table display nowrap table-striped table-bordered">{{--scroll-horizontal--}}
+                                        <thead class="">
+                                        {{#each orders}}
+                                            {{#if trader}}
+                                                <tr>
+                                                    <th>الاسم</th>
+                                                    <th>{{this.trader.name}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>رقم الهاتف</th>
+                                                    <th>{{this.trader.phone}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>البريد الاكتروني</th>
+                                                    <th>{{this.trader.email}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>العنوان</th>
+                                                    <th>{{this.trader.address}}</th>
+                                                </tr>
+                                            {{else}}
+                                                لايوجد
+                                            {{/if}}
+                                        {{/each}}
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> بيانات العميل </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table
+                                            class="table display nowrap table-striped table-bordered">{{--scroll-horizontal--}}
+                                        <thead class="">
+                                        {{#each orders}}
+                                            <tr>
+                                                <th>الاسم</th>
+                                                <th>{{this.username}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th>رقم الهاتف</th>
+                                                <th>{{this.userphone}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th>البريد الاكتروني</th>
+                                                <th>{{this.useremail}}</th>
+                                            </tr>
+                                        {{/each}}
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> بيانات المندوب </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table
+                                            class="table display nowrap table-striped table-bordered">{{--scroll-horizontal--}}
+                                        <thead class="">
+                                        {{#each orders}}
+                                            {{#if delvery}}
+                                                <tr>
+                                                    <th>الاسم</th>
+                                                    <th>{{this.delvery.name}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>رقم الهاتف</th>
+                                                    <th>{{this.delvery.phone}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>البريد الاكتروني</th>
+                                                    <th>{{this.delvery.email}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>العنوان</th>
+                                                    <th>{{this.delvery.address}}</th>
+                                                </tr>
+                                            {{else}}
+                                                لايوجد
+                                            {{/if}}
+                                        {{/each}}
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> بيانات الشحنة </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table
+                                            class="table display nowrap table-striped table-bordered">{{--scroll-horizontal--}}
+                                        <thead class="">
+                                        {{#each orders}}
+                                            {{#if cat}}
+                                                <tr>
+                                                    <th>الاسم</th>
+                                                    <th>{{this.name}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>الوزن</th>
+                                                    <th>{{this.weight}} جرام</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>السعر</th>
+                                                    <th>{{this.price}} ج م</th>
+                                                </tr>
+                                            {{else}}
+                                                لايوجد
+                                            {{/if}}
+                                        {{/each}}
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> تتبع الشحنة </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table
+                                            class="table display nowrap table-striped table-bordered">{{--scroll-horizontal--}}
+                                        <thead class="">
+                                        <tr>
+                                            <th>معلق</th>
+                                            <th>23:18:00 25-04-2022</th>
+                                        </tr>
+                                        <tr>
+                                            <th>تحت التنفيذ</th>
+                                            <th>18:10:00 26-04-2022</th>
+                                        </tr>
+                                        <tr>
+                                            <th>ملغي</th>
+                                            <th>12:03:00 26-04-2022</th>
+                                        </tr>
+                                        <tr>
+                                            <th>منتهي</th>
+                                            <th>01:23:00 26-04-2022</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> عنوان الشحنة </h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {{!-- error or success --}}
+
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <div id="mymap"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    // This example adds a search box to a map, using the Google Place Autocomplete
+    // feature. People can enter geographical searches. The search box will return a
+    // pick list containing a mix of places and predicted search terms.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('mymap'), {
+            center: {lat: 30.064742, lng: 31.249509},
+            zoom: 7,
+            mapTypeId: 'terrain',
+        });
+
+        const flightPlanCoordinates = [
+            {{#each orders}}
+                {lat: {{this.lat}}, lng: {{this.lang}} },
+                {lat: {{this.lat2}}, lng: {{this.lang2}} },
+            {{/each}}
+        ];
+        const flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 3,
+        });
+        flightPath.setMap(map);
+
+
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+    }
+
+    function splitLatLng(latLng) {
+        var newString = latLng.substring(0, latLng.length - 1);
+        var newString2 = newString.substring(1);
+        var trainindIdArray = newString2.split(',');
+        var lat = trainindIdArray[0];
+        var Lng = trainindIdArray[1];
+
+        $("#latitude").val(lat);
+        $("#longitude").val(Lng);
+    }
+
+
+</script>

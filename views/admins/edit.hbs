@@ -1,0 +1,342 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">الرئيسية </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="/admin/permission"> الاعدادات </a>
+                            </li>
+                            <li class="breadcrumb-item active">تعديل حساب اداري جديد
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic form layout section start -->
+            <section id="basic-form-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" id="basic-layout-form">تعديل حساب اداري جديد</h4>
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {{#if error}}
+                                {{#each error as |err|}}
+                                    <div class="row mr-2 ml-2">
+                                        <button type="text" class="btn btn-lg btn-block btn-outline-danger mb-2"
+                                                id="type-error">{{err}}
+                                        </button>
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <form class="form" action="/admin/permission/update"
+                                          method="POST">
+                                        <input type="hidden" name="id" value="{{admin._id}}">
+                                        <div class="form-body">
+                                            <h4 class="form-section"><i class="ft-home"></i> بيانات الحساب الاداري </h4>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">الاسم</label>
+                                                        <input type="text" id="name"
+                                                               class="form-control"
+                                                               placeholder="الاسم"
+                                                               value="{{admin.name}}"
+                                                               name="name" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1"> الوظيفة </label>
+                                                        <select name="type" id="" class="form-control" required>
+                                                            <option value="admin" selected> مدير</option>
+                                                            <option value="worker">موظف</option>
+                                                            <option value="dataentry">مدخل بيانات</option>
+                                                            <option value="support">دعم فني</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">البريد الاكتروني</label>
+                                                        <input type="email" id="name"
+                                                               class="form-control"
+                                                               value="{{admin.email}}"
+                                                               placeholder="البريد الاكتروني"
+                                                               name="email" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">كلمة السر</label>
+                                                        <input type="password" id="name"
+                                                               class="form-control"
+                                                               placeholder="كلمة السر"
+                                                               name="password">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4 class="form-section"><i class="ft-home"></i> الصلاحيات</h4>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addusers"
+                                                                   name="addusers" {{#if admin.permission.addusers}}
+                                                                   checked
+                                                            {{/if}}> اضافة العملاء
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delusers"
+                                                                   name="delusers" {{#if admin.permission.delusers}}
+                                                                   checked
+                                                            {{/if}}> حذف العملاء
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editusers"
+                                                                   name="editusers" {{#if admin.permission.editusers}}
+                                                                   checked
+                                                            {{/if}}> تعديل العملاء
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="notifications"
+                                                                   name="notifications" {{#if
+                                                                    admin.permission.addnotifications}}
+                                                                   checked
+                                                            {{/if}}> الاشعارات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="adddeleveries"
+                                                                   name="adddeleveries" {{#if
+                                                                    admin.permission.adddelevery}}
+                                                                   checked
+                                                            {{/if}}> اضافة المندوبين
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="deldeleveries"
+                                                                   name="deldeleveries" {{#if
+                                                                    admin.permission.deldelevery}}
+                                                                   checked
+                                                            {{/if}}> حذف المندوبين
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editdeleveries"
+                                                                   name="editdeleveries" {{#if
+                                                                    admin.permission.editdelevery}}
+                                                                   checked
+                                                            {{/if}}> تعديل المندوبين
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addvendors"
+                                                                   name="addvendors" {{#if admin.permission.addvendors}}
+                                                                   checked
+                                                            {{/if}}> اضافة التجار
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delvendors"
+                                                                   name="delvendors" {{#if admin.permission.delvendors}}
+                                                                   checked
+                                                            {{/if}}> حذف التجار
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editvendors"
+                                                                   name="editvendors" {{#if
+                                                                    admin.permission.editvendors}}
+                                                                   checked
+                                                            {{/if}}> تعديل التجار
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addcats" name="addcats" {{#if
+                                                                    admin.permission.addcat}}
+                                                                   checked
+                                                            {{/if}}> اضافة انواع المنقولات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delcats" name="delcats" {{#if
+                                                                    admin.permission.delcat}}
+                                                                   checked
+                                                            {{/if}}> حذف انواع المنقولات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editcats"
+                                                                   name="editcats" {{#if admin.permission.editcat}}
+                                                                   checked
+                                                            {{/if}}> تعديل انواع المنقولات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addlocations"
+                                                                   name="addlocations" {{#if
+                                                                    admin.permission.addlocations}}
+                                                                   checked
+                                                            {{/if}}> اضافة المدن
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editlocations"
+                                                                   name="editlocations" {{#if
+                                                                    admin.permission.editlocations}}
+                                                                   checked
+                                                            {{/if}}> تعديل المدن
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="dellocations"
+                                                                   name="dellocations" {{#if
+                                                                    admin.permission.dellocations}}
+                                                                   checked
+                                                            {{/if}}> حذف المدن
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="orders" name="orders"  {{#if
+                                                                    admin.permission.orders}}
+                                                                   checked
+                                                            {{/if}}> انهاء الطلبات
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="reports" name="reports" {{#if
+                                                                    admin.permission.reports}}
+                                                                   checked
+                                                            {{/if}}> التقارير
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="addcoupons"
+                                                                   name="addcoupons" {{#if admin.permission.addcoupns}}
+                                                                   checked
+                                                            {{/if}}> اضافة كوبونات الخصم
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="editcoupons"
+                                                                   name="editcoupons" {{#if
+                                                                    admin.permission.editcoupns}}
+                                                                   checked
+                                                            {{/if}}> تعديل كوبونات الخصم
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="right-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="delcoupons"
+                                                                   name="delcoupons" {{#if admin.permission.delcoupns}}
+                                                                   checked
+                                                            {{/if}}> حذف كوبونات الخصم
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                <i class="ft-x"></i> تراجع
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="la la-check-square-o"></i> حفظ
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // Basic form layout section end -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,291 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">الرئيسية </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="/admin/Profile"> الاعدادات العامة </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic form layout section start -->
+            <section id="basic-form-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" id="basic-layout-form">صورة البنارات</h4> <br>
+
+                                <div class="row">
+                                    {{#each banners}}
+                                        <div class="col-md-6">
+                                            <img src="https://sataex.com/{{this.photo}}"
+                                                 style="width:200px;height:200px">
+                                        </div>
+                                    {{/each}}
+                                </div>
+
+                                <a class="heading-elements-toggle"><i
+                                        class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {{!-- error --}}
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <form action="/admin/post-Banner" method="POST" enctype="multipart/form-data">
+                                        <div class="form-body">
+                                            <h4 class="form-section"><i class="ft-home"></i> بيانات البانرز </h4>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">الصورة</label>
+                                                        <input type="file" name="avatar" class="form-control" required>
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                <i class="ft-x"></i> تراجع
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="la la-check-square-o"></i> حفظ
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <form class="form" action="/admin/Update-Profile"
+                                          method="POST">
+                                        <div class="form-body">
+                                            <input type="hidden" name="id" value="{{user._id}}">
+                                            <h4 class="form-section"><i class="ft-home"></i> بيانات الاعدادات العامة
+                                            </h4>
+                                            <div class="row">
+                                                {{!--<div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">الصورة</label>
+                                                        <input type="file" name="photo" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">اسم التطبيق</label>
+                                                        <input type="text" id="name"
+                                                            class="form-control"
+                                                            placeholder="اسم التطبيق"
+                                                            name="name" required>
+                                                        <span class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">  اللغة </label>
+                                                    <select name="lang" id="" class="form-control" required>
+                                                        <option value="ar" selected>العربية </option>
+                                                        <option value="en">الانجليزية </option>
+                                                    </select>
+                                                    </div>
+                                                </div>--}}
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">عمولة الموقع</label>
+                                                        <input type="number" id="name"
+                                                               class="form-control"
+                                                               placeholder="عمولة الموقع"
+                                                               name="sitepercent" required value="{{user.sitepercent}}">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">سعر الكيلو</label>
+                                                        <input type="number" id="name"
+                                                               class="form-control"
+                                                               placeholder="سعر الكيلو"
+                                                               name="vendorpercent" required
+                                                               value="{{user.vendorpercent}}">
+                                                        <span class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">سعر الوزن</label>
+                                                        <input type="number" id="name"
+                                                               class="form-control"
+                                                               placeholder="سعر الوزن"
+                                                               name="" required value="0">
+                                                        <span class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">عمولة المندوب</label>
+                                                        <input type="number" id="name"
+                                                               class="form-control"
+                                                               placeholder="عمولة المندوب"
+                                                               name="deleverypercent" required
+                                                               value="{{user.deleverypercent}}">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4 class="form-section"><i class="ft-lock"></i> تغير كلمة المرور </h4>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">كلمة المرور الجديدة</label>
+                                                        <input type="password" id="name"
+                                                               class="form-control"
+                                                               placeholder="كلمة المرور الجديدة"
+                                                               name="">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">كلمة المرور الحالية</label>
+                                                        <input type="password" id="name"
+                                                               class="form-control"
+                                                               placeholder="كلمة المرور الحالية"
+                                                               name="">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">اعادة كتابة كلمة المرور
+                                                            الجديدة</label>
+                                                        <input type="password" id="name"
+                                                               class="form-control"
+                                                               placeholder="اعادة كتابة كلمة المرور الجديدة"
+                                                               name="">
+                                                        {{!-- <span class="text-danger"></span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="form-section"><i class="la la-money"></i> طرق الدفع </h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="projectinput1">العملة الافتراضية</label>
+                                                    <select class="form-control" name="currency">
+                                                        <option value="">الجنية المصري</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="projectinput1">طرق الدفع</label>
+                                                    <select class="form-control" name="waypay">
+                                                        <option value="">كاش</option>
+                                                        <option value="">باي بال</option>
+                                                        <option value="">فيزا</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="form-section"><i class="la la-phone"></i> وسائل الاتصال </h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="projectinput1">رقم الهاتف</label>
+                                                    <input type="tel" id="name"
+                                                           class="form-control"
+                                                           placeholder="01**********"
+                                                           name="phone" value="{{user.phone}}">
+                                                    {{!-- <span class="text-danger"></span> --}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="projectinput1">رقم الواتس اب</label>
+                                                    <input type="tel" id="name"
+                                                           class="form-control"
+                                                           placeholder="01**********"
+                                                           name="whatsapp" value="{{user.whatsapp}}">
+                                                    {{!-- <span class="text-danger"></span> --}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="projectinput1">البريد الالكتروني</label>
+                                                    <input type="email" id="name"
+                                                           class="form-control"
+                                                           placeholder="example@gmail.com"
+                                                           name="email" value="{{user.email}}">
+                                                    {{!-- <span class="text-danger"></span> --}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="projectinput1">لينك الفيس بوك</label>
+                                                    <input type="url" id="name"
+                                                           class="form-control"
+                                                           placeholder="لينك الفيس بوك"
+                                                           name="facebook" value="{{user.facebook}}">
+                                                    {{!-- <span class="text-danger"></span> --}}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-warning mr-1"
+                                            onclick="history.back();">
+                                        <i class="ft-x"></i> تراجع
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="la la-check-square-o"></i> حفظ
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
+        <!-- // Basic form layout section end -->
+    </div>
+</div>
+</div>
+{{#if successbanner}}
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'تمت العملية بنجاح',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    </script>
+{{/if}}
+{{#if success}} successbanner
+<script>
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'تمت العملية بنجاح',
+        showConfirmButton: false,
+        timer: 1500
+    })
+</script>
+{{/if}} 
