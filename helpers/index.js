@@ -1,4 +1,4 @@
-const {compareSync, genSaltSync, hashSync} = require("bcrypt-nodejs");
+const {compareSync, genSaltSync, hashSync} = require("bcrypt");
 module.exports.isLoggedIn = async (req, res, next) => {
     const isUnAuthenticated = await req.isUnauthenticated();
     if (isUnAuthenticated) {
